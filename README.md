@@ -81,11 +81,10 @@ For custom data uploads, CSV files should include:
 - Expanded visualization options
 
 ## License
-[Add appropriate license information]
+
 
 ## Contributors
-[Your name/organization]
+Muheez Okunade
 
 ## Acknowledgments
 - Nigerian construction industry data providers
-- [Add any other acknowledgments]
