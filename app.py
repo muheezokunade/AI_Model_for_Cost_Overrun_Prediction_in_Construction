@@ -1,15 +1,3 @@
-import streamlit as st
-
-try:
-    from data_processor import DataProcessor
-    from model import ModelTrainer
-    from utils import generate_insights, plot_feature_importance, calculate_contingency
-except Exception as e:
-    st.error(f"Import Error: {e}")
-    st.stop()
-
-
-
 
 import streamlit as st
 import pandas as pd
