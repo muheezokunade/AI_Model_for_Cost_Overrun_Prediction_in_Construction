@@ -19,6 +19,9 @@ st.set_page_config(
     layout="wide"
 )
 
+# Immediately show an instruction
+st.info("👈 Please use the sidebar to upload your data or select sample data to begin.")
+
 # Initialize session state variables if they don't exist
 if 'data' not in st.session_state:
     st.session_state.data = None
