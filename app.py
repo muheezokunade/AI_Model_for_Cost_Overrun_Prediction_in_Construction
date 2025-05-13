@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -11,12 +10,22 @@ from utils import generate_insights, plot_feature_importance, calculate_continge
 import os
 import io
 
+# Error handling decorator
+def handle_exceptions(func):
+    def wrapper(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            st.error(f"An error occurred: {str(e)}")
+            return None
+    return wrapper
 
 # Set page title and configuration
 st.set_page_config(
     page_title="Construction Cost Overrun Predictor",
     page_icon="🏗️",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
 # Immediately show an instruction
