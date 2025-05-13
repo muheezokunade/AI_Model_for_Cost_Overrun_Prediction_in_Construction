@@ -4,11 +4,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
-from data_processor import DataProcessor
-from model import ModelTrainer
-from utils import generate_insights, plot_feature_importance, calculate_contingency
 import os
 import io
+import sys
+import traceback
+
+# Add error handling for imports
+try:
+    from data_processor import DataProcessor
+    from model import ModelTrainer
+    from utils import generate_insights, plot_feature_importance, calculate_contingency
+except Exception as e:
+    st.error(f"Failed to import required modules: {str(e)}")
+    st.write("Traceback:", traceback.format_exc())
+    sys.exit(1)
 
 # Error handling decorator
 def handle_exceptions(func):
@@ -17,16 +26,27 @@ def handle_exceptions(func):
             return func(*args, **kwargs)
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
+            st.write("Traceback:", traceback.format_exc())
             return None
     return wrapper
 
 # Set page title and configuration
-st.set_page_config(
-    page_title="Construction Cost Overrun Predictor",
-    page_icon="🏗️",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+try:
+    st.set_page_config(
+        page_title="Construction Cost Overrun Predictor",
+        page_icon="🏗️",
+        layout="wide",
+        initial_sidebar_state="expanded"
+    )
+except Exception as e:
+    st.error(f"Failed to set page config: {str(e)}")
+    sys.exit(1)
+
+# Check if sample data exists
+if not os.path.exists("sample_data.csv"):
+    st.error("sample_data.csv not found in the current directory!")
+    st.write("Current directory contents:", os.listdir("."))
+    sys.exit(1)
 
 # Immediately show an instruction
 st.info("👈 Please use the sidebar to upload your data or select sample data to begin.")
