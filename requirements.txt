@@ -1,11 +1,11 @@
 --only-binary=:all:
 streamlit==1.24.0
-pandas==1.5.3
-numpy==1.24.3
-scikit-learn==1.2.2
-matplotlib==3.7.1
-plotly==5.13.1
-seaborn==0.12.2
+pandas==1.5.3 --only-binary :all:
+numpy==1.24.3 --only-binary :all:
+scikit-learn==1.2.2 --only-binary :all:
+joblib==1.2.0 --only-binary :all:
+matplotlib==3.7.1 --only-binary :all:
+seaborn==0.12.2 --only-binary :all:
 scipy==1.10.1
 setuptools==67.8.0
 wheel==0.40.0
